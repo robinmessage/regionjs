@@ -162,11 +162,14 @@ Permissions beyond the scope of this license, pertaining to the examples of code
 			width:1024px;
 		}
 		
+		.desktop {
+		}
+		
 	</style>
 </head>
 <body>
 	<form action="#" id="controls">
-		<a href="index.html" id="home">Home</a>
+		<a href="../" id="home">Home</a>
 		<fieldset id="samplesMenu">
 			<select name="sample" id="sample">
 				<optgroup label="Basic">
@@ -334,18 +337,15 @@ Permissions beyond the scope of this license, pertaining to the examples of code
 		context[viewerName] = new Viewer(); 
 		     
 	   	function UACheck(string){    
-			if (!window.navigator.userAgent.match(string)){ 
-			   var el = document.createElement("div");  
-			   el.style.top = "0";
-			   el.style.color = "black";
-			   el.style.fontWeight = "bold";
-			   el.style.padding = "25px";
-			   el.style.fontSize = "18px";
-			   el.style.background = "pink";
-		       el.innerHTML = "This sample works correctly only with the browser that comes with the <a href=\"http://www.adobe.com/go/cssregions\">CSS Regions prototype</a>. <br/>For the best experience please download and use that browser.";
-		       
-		  	   document.body.insertBefore(el, document.body.firstChild); 
-			}
+		   var el = document.createElement("div");  
+		   el.style.top = "0";
+		   el.style.color = "black";
+		   el.style.padding = "25px";
+		   el.style.fontSize = "18px";
+		   el.style.background = "lightgreen";
+	       el.innerHTML = "<b>These sample should work with any modern browser. Thanks to Adobe's <a href=\"http://www.adobe.com/go/cssregions\">CSS Regions prototype</a> for the inspiration.</b><br>Unfortunately, vertical resizing is a little broken inside this viewer. Opening the frame in a new window to see vertical resizing in action";
+	       
+	  	   document.body.insertBefore(el, document.body.firstChild); 
 		};
 		
 		//Check if you're using the prototype browser 
