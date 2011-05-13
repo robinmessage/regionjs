@@ -1,7 +1,7 @@
 CSS3 Regions in Javascript
 ==========================
 
-N.B. This is an incomplete, buggy, trial implementation that doesn't even obey the spec.
+N.B. This is an incomplete, buggy, trial implementation that doesn't even obey the spec, but does demonstrate the concept.
 
 Introduction
 ------------
@@ -12,6 +12,11 @@ It turns out, you do. But, I have implemented the story threading part, which yo
 The next step for this project is to implement the exclusions module, as these modules work quite well together for advanced print-style layouts.
 
 With the approach I've taken, special styling rules are not needed -- just set styles within the regions as you would normally.
+
+Demo
+----
+
+View the [demo browser](http://robinmessage.github.com/regionjs/samples/viewer.html) or the specific demos:  [single threaded story](http://robinmessage.github.com/regionjs/samples/simple_single_thread.html), [multiple threaded stories](http://robinmessage.github.com/regionjs/samples/simple_multiple_threads.html) and a [multi column article](http://robinmessage.github.com/regionjs/samples/advanced_multi-column-artice.html).
 
 Performance
 -----------
