@@ -3,12 +3,12 @@
 <head>
   <meta charset='utf-8'>
 
-  <title>robinmessage/regionjs @ GitHub</title>
+  <title>RegionJS by Robin Message</title>
 
   <style type="text/css">
     body {
       margin-top: 1.0em;
-      background-color: #aa7165;
+      background-color: #ddd;
       font-family: Helvetica, Arial, FreeSans, san-serif;
       color: #000000;
     }
@@ -42,16 +42,51 @@
         <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
     </div>
 
-    <h1><a href="http://github.com/robinmessage/regionjs">regionjs</a>
+    <h1><a href="http://github.com/robinmessage/regionjs">RegionJS</a>
       <span class="small">by <a href="http://github.com/robinmessage">robinmessage</a></span></h1>
 
     <div class="description">
-      Javascript implementation of CSS3 Regions
+      A simple javascript implementation of CSS3 Regions.
     </div>
 
     <h2>Authors</h2>
-<p>Robin Message (Robin.Message@cl.cam.ac.uk)<br/><br/>      </p>
+<p>Robin Message (Robin.Message@cl.cam.ac.uk)</p>
 
+	<h2>Demo</h2>
+	<p>
+	View the original Adobe demos <a href="samples/viewer.html">here</a>.
+	</p>
+
+<p>N.B. This is an incomplete, buggy, trial implementation that doesn't even obey the spec.</p>
+
+<h2>Introduction</h2>
+
+<p>When I saw Adobe's CSS regions prototype, I thought, "surely you don't need a whole browser fork to implement that."
+It turns out, you do. But, I have implemented the story threading part, which you can see in Adobe's own demonstrations here, here and here.</p>
+
+<p>The next step for this project is to implement the exclusions module, as these modules work quite well together for advanced print-style layouts.</p>
+
+<p>With the approach I've taken, special styling rules are not needed -- just set styles within the regions as you would normally.</p>
+
+<h2>Performance</h2>
+
+<p>Slightly laggy on resizing, but not particularly noticable. Could be improved by only reflowing after a resize is finished (easy) or reflowing incrementally (hard).</p>
+
+<h2>Implementation</h2>
+
+<p>Uses jquery (although only a little, I can't be bothered to work around browser bugs myself). The Adobe examples are manually soft-hyphenated; a real solution would maybe use hyphenator or something similar, or do hyphenation on the server-side. As long as you hyphenate first, it'll work fine.
+We fill each region until it overflows, then we cut the HTML up until it fits, then we continue into the next region and so on. The last region is allowed to overflow, so set overflow: hidden if that will look bad.</p>
+
+<p>Instead of using custom CSS features, you mark a story to be flowed with the CSS class "regioned" and add the custom attribute "region" to name the flow. Regions that can have flow go into them are labelled with the CSS class "region", immediately followed by the name of the region (e.g. A div with class regioned and region main-story will flow into all elements with a class that contains "region main-flow".) Obviously, this is a little hacky -- any better suggestions appreciated.</p>
+
+<h2>Todo</h2>
+
+<ul>
+
+<li>Tidy everything up a little.</li>
+<li>Add support for exclusions.</li>
+<li>Check browser support.</li>
+</ul>
 
     <h2>Download</h2>
     <p>
