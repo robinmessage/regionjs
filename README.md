@@ -16,7 +16,7 @@ With the approach I've taken, special styling rules are not needed -- just set s
 
 Performance
 -----------
-Slightly laggy on resizing, but not particularly noticable. Could always reflow after a resize.
+Slightly laggy on resizing, but not particularly noticable. Could be improved by only reflowing after a resize is finished (easy) or reflowing incrementally (hard).
 
 Implementation
 --------------
@@ -29,6 +29,6 @@ Instead of using custom CSS features, you mark a story to be flowed with the CSS
 Todo
 ----
 
-- Everything!
+- Tidy everything up a little.
 - Add support for exclusions.
 - Check browser support.

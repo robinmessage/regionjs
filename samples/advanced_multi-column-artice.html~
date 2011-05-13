@@ -1,0 +1,209 @@
+<!--
+Copyright 2011 Adobe Systems, incorporated
+This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License <http://creativecommons.org/licenses/by-nc-sa/3.0/> . 
+Permissions beyond the scope of this license, pertaining to the examples of code included within this work are available at Adobe <http://www.adobe.com/communities/guidelines/ccplus/commercialcode_plus_permission.html> .
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>CSS Regions - Into The Great Wide Open</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+	
+	html,
+	body{
+		width:100%;
+		height:100%;
+	}
+	
+	body{
+		margin:0;
+		font-family:Georgia, Times, serif;
+		color:#666;
+	}
+	
+	#workspace{
+		position:relative;
+		width:100%;
+		height:100%;
+		min-width:600px;
+		min-height:600px;
+		max-width:1024px;     
+		overflow:hidden;  
+	}
+	
+	#source{
+		-webkit-flow: "article-thread";
+		-webkit-hyphens: auto;
+		font-size:14px;
+		line-height:22px;
+	}
+	
+	blockquote{
+		-webkit-flow: "quote-thread";     
+		-webkt-hyphens: none;
+		font-size:33px;   
+		line-height:36px;
+		color:#ab8058;
+		margin:0;
+	}   
+	
+	.exclusion{
+		position:absolute;
+		-webkit-wrap-shape-mode: around;
+		-webkit-wrap-shape-order: 2;   
+/*		-webkit-render-wrap-shape: auto;  */
+	}
+	
+	#illustration-top{    
+		top:5px;
+		left:0;
+		height:100px;  
+		width:1064px;      
+		background:transparent url("images/route_2.png") left top;
+		-webkit-wrap-shape: polygon(1064px, 98px 921px, 98px 896px, 73px 860px, 73px 838px, 50px 813px, 50px 801px, 62px 801px, 86px 766px, 98px 744px, 98px 720px, 74px 696px, 74px 673px, 51px 636px, 51px 612px, 75px 590px, 75px 577px, 98px 542px, 98px 531px, 75px 507px, 75px 471px, 98px 448px, 98px 448px, 75px 412px, 51px 378px, 51px 353px, 75px 320px, 75px 296px, 99px 270px, 99px 258px, 87px 258px, 64px 225px, 53px 199px, 53px 176px, 75px 153px, 75px 130px, 98px 0px, 98px 0px, 0px 1064px, 0px 1064px, 98px );
+	}
+	
+	#illustration-bottom{
+		height:202px;
+		width:1024px;
+		bottom:0;
+		left:0;
+		background:transparent url("images/desert-cars.jpg") left bottom;
+		-webkit-wrap-shape: polygon(0px, 56px 68px, 47px 124px, 50px 137px, 16px 210px, 7px 241px, 11px 256px, 38px 308px, 46px 405px, 37px 480px, 24px 608px, 30px 717px, 41px 758px, 23px 802px, 0px 845px, 17px 902px, 29px 939px, 18px 993px, 24px 1024px, 24px 1024px, 202px 0px, 202px 0px, 56px );
+	}
+	
+	#article{
+		position:absolute;
+		z-index:2;       
+		width:100%;
+		top:95px;
+		bottom:202px;
+	}
+	
+	#regions{        
+		position:relative;
+		width:90%;  
+		margin:0 auto;
+	}
+	
+	.region{
+		content: from(article-thread);
+		-webkit-wrap-shape-order: 1; 
+		-webkit-wrap-shape-mode: content;        
+		float:left;  
+		height:100%;     
+	}
+	
+	#region4{
+		position:absolute;    
+		-webkit-wrap-shape-order: 3;  
+		-webkit-wrap-shape-mode:around; 
+	}
+	
+	.quote{
+		content: from(quote-thread);
+	}
+	
+	@media all and (orientation:landscape) {   
+		.region{
+			width:30%; 
+		}   
+		
+		#region2{
+			margin:0 5%;
+		}  
+		
+		#region4{
+			width:30%; 
+			right:0;  
+			top:200px;
+			height:80px;    
+			padding:30px 0;
+		}
+	}
+	
+	@media all and (orientation:portrait) {      
+		
+		#regions{        
+			position:relative;
+			width:80%;  
+			margin:0 auto;
+		}
+		    .region{
+			   width:45%;
+			}
+			
+			#region1{
+				margin:0 10% 0 0;
+			}              
+			
+			#region3{
+				display:none;
+			}   
+			
+		   	 #region4{       
+				width:45%; 
+				left:0;      
+				top:550px;
+				height:80px;    
+				padding:30px 0;
+			}          
+	}
+	
+	/* Customizations for Galaxy Tab in portrait mode */
+	@media all and (orientation:portrait) and (max-width: 600px){         
+		blockquote{
+			font-size:26px;  
+			line-height:28px;
+		}      
+		
+		#region4{    
+			top:540px;
+			height:70px;  
+			padding:0;          
+		}
+		                
+		#illustration-top,
+		#illustration-bottom{         
+			left:-100px;
+		}
+	}
+	
+	/* Customizations for Galaxy Tab in landscape mode */
+	@media all and (orientation:landscape) and (max-height: 600px){        
+		       
+	}
+	
+	#regions {
+		height:100%;
+	}
+	
+	</style>
+	<script src="../jquery-1.6.js"></script>
+	<script src="../region.js"></script>
+</head>
+<body>
+	<div id="workspace">
+		<div id="article">
+			<div id="regions">
+	<div id="source" class="aregioned" region="article-thread">
+		<p>of our lo&shy;cal pa&shy;pers had been picked up by the AP and had spread world&shy;wide. We did in&shy;ter&shy;views for news&shy;pa&shy;pers and ra&shy;dio sta&shy;tions all across the coun&shy;try and at least one ra&shy;dio sta&shy;tion in Can&shy;a&shy;da.</p>
+		<p>With all the ex&shy;po&shy;sure it wasn’t long be&shy;fore we were made aware that the re&shy;cord of 120 hours had been bro&shy;ken al&shy;ready. A few emails and phone calls lat&shy;er and we found out that two State Farm agents from Tex&shy;as held the last re&shy;cord cer&shy;ti&shy;fied by Guin&shy;ness of 118 hours. That was quite a down&shy;er. We had fol&shy;low&shy;ers count&shy;ing on us to break the re&shy;cord and we had fig&shy;ured eve&shy;ry&shy;thing on a faulty prem&shy;ise.</p>
+		<p>We re&shy;solved to just keep at it and hope for the best. We re&shy;ceived lots of en&shy;cour&shy;age&shy;ment from friends, fam&shy;i&shy;ly and fans and we couldn’t let them down. Af&shy;ter many miles and a few ad&shy;ven&shy;tures (which can be found here) we fin&shy;ished our cra&shy;zy trip at four cor&shy;ners. We beat our ex&shy;pec&shy;ta&shy;tions by a long shot, hit&shy;ting all 48 con&shy;tig&shy;u&shy;ous states in 106 hours and 43 min&shy;utes. Even though we had five more hours of driv&shy;ing to get home, we were ec&shy;stat&shy;ic.</p>
+		<p>Af&shy;ter we wrapped up we found out how many peo&shy;ple had heard about our Great Amer&shy;i&shy;can Road Trip. We had as many as 25,000 hits on this site in a day from doz&shy;ens of coun&shy;tries from eve&shy;ry con&shy;ti&shy;nent ex&shy;cept Ant&shy;arc&shy;ti&shy;ca. We were men&shy;tioned in mag&shy;a&shy;zines rang&shy;ing from a Chris&shy;tian Mag&shy;a&shy;zine to Car and Driv&shy;er. We con&shy;tin&shy;ued to do in&shy;ter&shy;views and we found news ar&shy;ti&shy;cles in Chi&shy;nese, Ger&shy;man, and many oth&shy;er lan&shy;guag&shy;es. We were as&shy;tound&shy;ed.</p>
+		<p>So many peo&shy;ple con&shy;nect&shy;ed with our trip in so many ways and we have been an in&shy;spi&shy;ra&shy;tion to many to hit the road or fol&shy;low their dreams. Some of those we in&shy;spired were in&shy;spired to beat our re&shy;cord and ac&shy;com&shy;plished just that. The trip was great, the sense of ac&shy;com&shy;plish&shy;ment was won&shy;der&shy;ful but know&shy;ing we might have made a dif&shy;fer&shy;ence in some&shy;one’s day, let alone life, is bet&shy;ter than any re&shy;cord.</p>
+		<blockquote class="not-regioned" region="quote-thread">&#147;To anyone we inspired, thanks.&#148;</blockquote>
+		<p>To an&shy;y&shy;one we in&shy;spired, to all those that en&shy;joyed our jour&shy;ney, to our fam&shy;i&shy;lies and to our friends, thank you.</p>
+	</div>
+				<div id="region1" class="region article-thread"></div>
+				<div id="region2" class="region article-thread"></div>
+				<div id="region3" class="region article-thread"></div>
+				<div id="region4" class="quote region quote-thread"></div>
+			</div>
+		</div>
+		<div id="illustration-top" class="exclusion"></div>
+		<div id="illustration-bottom" class="exclusion"></div>
+	</div>
+</body>
+</html>
